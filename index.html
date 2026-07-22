@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+
+    <title>Scratch to Reveal</title>
+    <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #F7EAD5
+        } */
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 380px;
+            border-radius: 0px;
+            overflow: hidden;
+            /* box-shadow: 0 8px 24px rgba(0, 0, 0, .2) */
+        }
+
+        #bg {
+            position: absolute;
+            inset: 0;
+            background: #F7EAD5;
+            padding: 24px;
+            box-sizing: border-box;
+            text-align: center;
+            color: #6C0815;
+            font-family: Courier New, Courier, monospace;
+        }
+
+        canvas {
+            position: absolute;
+            inset: 0;
+            touch-action: none;
+            width: 300px;
+            height: 380px;
+        }
+
+        button {
+            padding: 10px 16px
+        }
+
+        .qr {
+            width: 95px;
+            height: 95px;
+            margin-top: 18px;
+        }
+
+        .scan {
+            font-size: 14px;
+            margin-top: 8px;
+            color: #6C0815;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div id="bg">
+            <h2>Sahana Convention Center</h2>
+            <p>Koteshwara, Kundapura</p>
+            <p><b>30 August 2026</b></p>
+            <img src="qr-code.png" class="qr">
+            <p class="scan">Scan for Directions</p>
+        </div>
+        <canvas id="c"></canvas>
+    </div>
+    <script>
+        const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+        function rs() {
+            cv.width = cv.offsetWidth;
+            cv.height = cv.offsetHeight;
+
+            // Solid scratch layer
+            ctx.fillStyle = "#6C0815";
+            ctx.fillRect(0, 0, cv.width, cv.height);
+
+            // Text
+            ctx.fillStyle = "#F7EAD5";
+            ctx.font = "38px 'Allura'";
+            ctx.textAlign = "center";
+            ctx.fillText("Scratch to Reveal", cv.width / 2, cv.height / 2 - 10);
+
+            ctx.font = "20px 'Allura'";
+            ctx.fillText("Our Wedding Venue", cv.width / 2, cv.height / 2 + 25);
+        }
+        rs(); window.onresize = rs;
+        let d = false; function pos(e) { let r = cv.getBoundingClientRect(), t = e.touches ? e.touches[0] : e; return [t.clientX - r.left, t.clientY - r.top] }
+        ['mousedown', 'touchstart'].forEach(ev => cv.addEventListener(ev, e => { d = true }));
+        ['mouseup', 'mouseleave', 'touchend'].forEach(ev => cv.addEventListener(ev, e => { d = false }));
+        ['mousemove', 'touchmove'].forEach(ev => cv.addEventListener(ev, e => { if (!d) return; e.preventDefault(); let [p, q] = pos(e); ctx.globalCompositeOperation = 'destination-out'; ctx.beginPath(); ctx.arc(p, q, 22, 0, 7); ctx.fill(); }));
+    </script>
+</body>
+
+</html>
