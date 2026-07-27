@@ -1,0 +1,276 @@
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #7C1521;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Envelope Image */
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Content */
+
+.hero-content {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #E5CC9D;
+}
+
+/* MESSAGE FROM */
+.text-top {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    color: #E5CC9D;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    animation: slideUp 1s ease forwards;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Couple Name */
+.names {
+    position: absolute;
+    top: 255px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    color: #E5CC9D;
+    font-family: 'Allura', cursive;
+    font-size: 58px;
+    white-space: nowrap;
+    animation: slideUp 1s ease forwards;
+}
+
+/* Tap Text */
+.tap-text {
+    position: absolute;
+    left: 50%;
+    bottom: 45px;
+    transform: translateX(-50%);
+    color: #E5CC9D;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    z-index: 5;
+    animation: blink 1.5s infinite;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Clickable area over the wax seal */
+
+#sealButton {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 105px;
+    /* Adjust if needed */
+
+    transform: translateX(-50%);
+
+    width: 170px;
+    height: 170px;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+
+    z-index: 20;
+
+    background: transparent;
+
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.08);
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+/* Blink Animation */
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .4;
+    }
+}
+
+/* slideUp */
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 80px);
+    }
+
+    to {
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Pulse */
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+/* Blink */
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .45;
+    }
+
+}
+
+/* Fade */
+
+@keyframes fadeDown {
+
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:768px) {
+
+    .message {
+        font-size: 18px;
+        top: 30px;
+    }
+
+    .names {
+        font-size: 42px;
+        top: 220px;
+    }
+
+    .seal {
+        width: 110px;
+        bottom: 120px;
+    }
+
+    .tap {
+        font-size: 22px;
+        bottom: 28px;
+    }
+
+}
+
+/* Second Page */
+
+.invitation-page {
+    position: fixed;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 100vh;
+    background: #F7EAD5;
+    transition: 1s ease-in-out;
+    z-index: 50;
+}
+
+.invitation-page.show {
+
+    top: 0;
+
+}
+
+.page2-image {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+}
