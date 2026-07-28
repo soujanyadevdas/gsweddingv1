@@ -1,29 +1,59 @@
 const sealButton = document.getElementById("sealButton");
+const hero = document.querySelector(".hero");
 const invitationPage = document.getElementById("invitationPage");
-const continueBtn = document.getElementById("continueBtn");
-const music = document.getElementById("bgMusic");
+const bgMusic = document.getElementById("bgMusic");
 
 sealButton.addEventListener("click", () => {
 
-    music.play().catch(() => { });
+    bgMusic.play().catch(() => { });
 
-    document.querySelector(".hero").style.opacity = "0";
-    document.querySelector(".hero").style.pointerEvents = "none";
+    // Hide envelope
+    hero.style.display = "none";
 
-    setTimeout(() => {
-        invitationPage.classList.add("show");
-    }, 600);
+    // Show invitation
+    invitationPage.classList.add("show");
+
+    // Enable scrolling only after opening
+    document.body.style.overflowY = "auto";
+    document.documentElement.style.overflowY = "auto";
+
+    // Start from the top
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
 });
 
-continueBtn.addEventListener("click", () => {
 
-    document.body.classList.add("fadeOut");
+// ====================
+// LIVE COUNTDOWN
+// ====================
 
-    setTimeout(() => {
+const weddingDate = new Date("August 30, 2026 09:00:00").getTime();
 
-        window.location.href = "https://gsweddiing.my.canva.site/soujanyagaurav";
+function updateCountdown() {
 
-    }, 900);
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
 
-});
+    if (distance < 0) {
+        document.getElementById("countdown").innerHTML =
+            "<h2>We're Married ❤️</h2>";
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+}
+
