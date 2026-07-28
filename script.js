@@ -1,20 +1,29 @@
 const sealButton = document.getElementById("sealButton");
+const invitationPage = document.getElementById("invitationPage");
+const continueBtn = document.getElementById("continueBtn");
 const music = document.getElementById("bgMusic");
-const invitation = document.getElementById("invitationPage");
 
 sealButton.addEventListener("click", () => {
 
-    // Play music
-    music.play().catch(console.error);
+    music.play().catch(() => { });
 
-    // Prevent multiple clicks
-    sealButton.style.pointerEvents = "none";
+    document.querySelector(".hero").style.opacity = "0";
+    document.querySelector(".hero").style.pointerEvents = "none";
 
-    // Slide second page up
+    setTimeout(() => {
+        invitationPage.classList.add("show");
+    }, 600);
+
+});
+
+continueBtn.addEventListener("click", () => {
+
+    document.body.classList.add("fadeOut");
+
     setTimeout(() => {
 
-        invitation.classList.add("show");
+        window.location.href = "https://gsweddiing.my.canva.site/soujanyagaurav";
 
-    }, 300);
+    }, 900);
 
 });
