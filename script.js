@@ -57,3 +57,28 @@ function updateCountdown() {
     document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
 }
 
+
+// ==========================
+// EVENT CAROUSEL DOTS
+// ==========================
+
+const carousel = document.querySelector(".carousel");
+const cards = document.querySelectorAll(".event-card");
+const dots = document.querySelectorAll(".dot");
+
+function updateDots() {
+
+    const cardWidth = cards[0].offsetWidth + 35; // 35 = gap between cards
+
+    const index = Math.round(carousel.scrollLeft / cardWidth);
+
+    dots.forEach(dot => dot.classList.remove("active"));
+
+    if (dots[index]) {
+        dots[index].classList.add("active");
+    }
+}
+
+carousel.addEventListener("scroll", updateDots);
+
+window.addEventListener("load", updateDots);
