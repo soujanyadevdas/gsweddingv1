@@ -33,7 +33,7 @@ sealButton.addEventListener("click", () => {
 // LIVE COUNTDOWN
 // ====================
 
-const weddingDate = new Date("August 30, 2026 09:00:00").getTime();
+const weddingDate = new Date("August 30, 2026 10:30:00").getTime();
 
 function updateCountdown() {
 
