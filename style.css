@@ -638,18 +638,18 @@ body.fadeOut {
     }
 
     .last-page {
-        font-size: 1rem;
+        font-size: 1.5rem;
         font-weight: 600;
-        font-family: 'Cormorant Garamond', serif;
+        font-family: 'Allura', cursive;
         animation: fadeUp 1s .4s both;
     }
 
 }
 
 .last-page {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Allura', cursive;
     animation: fadeUp 1s .4s both;
 }
 
@@ -1182,7 +1182,7 @@ body.fadeOut {
 
     position: absolute;
 
-    top: 105px;
+    top: 120px;
     left: 52px;
     right: 52px;
     bottom: 48px;
@@ -1208,6 +1208,9 @@ body.fadeOut {
     color: #F7EAD5;
     font-family: "Cormorant Garamond", serif;
     font-size: 20px;
+
+    font-weight: 700;
+    margin-bottom: 10px;
 
     text-align: center;
 
@@ -1289,6 +1292,10 @@ body.fadeOut {
         font-size: 20px;
         font-weight: 700;
         margin-bottom: 10px;
+        color: #F7EAD5;
+        font-family: "Cormorant Garamond", serif;
+
+        text-align: center;
 
     }
 
@@ -1323,6 +1330,20 @@ body.fadeOut {
 
         font-size: 12px;
 
+    }
+
+    .card-content {
+
+        position: absolute;
+
+        top: 105px;
+        left: 52px;
+        right: 52px;
+        bottom: 48px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
 }
@@ -1397,6 +1418,7 @@ body.fadeOut {
     color: #7C1521;
 
     width: 90%;
+    margin-top: -400px;
 
 }
 
